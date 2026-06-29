@@ -1,10 +1,16 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import FriendsContext from "../context/FriendsContext";
 
+/* étant donnée que je passe maintenant par le context
+   je n'ai plus besoin de passer par les props friends et setFriends.
+   vu que je les récupère via le context
+*/
 function User(props) {
   const { username, name, email } = props;
 
   // TODO replace with context
-  const { friends, setFriends } = props;
+  const { friends, setFriends } = useContext(FriendsContext);
 
   function addFriend() {
     if (friends.includes(username)) {
@@ -31,8 +37,6 @@ User.propTypes = {
   username: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  friends: PropTypes.array.isRequired,
-  setFriends: PropTypes.func.isRequired,
 };
 
 export default User;

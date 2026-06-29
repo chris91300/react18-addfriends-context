@@ -1,8 +1,15 @@
 import PropTypes from "prop-types";
+import FriendsContext from "../context/FriendsContext";
+import { useContext } from "react";
 
-function FriendList(props) {
+/* étant donnée que je passe maintenant par le context
+   je n'ai plus besoin de passer par des props.
+   j'ai donc supprimé les props
+*/
+function FriendList() {
+
   // TODO replace with context
-  const { friends } = props;
+  const { friends } = useContext(FriendsContext);
 
   return (
     <div className="FriendList">
@@ -15,8 +22,5 @@ function FriendList(props) {
   );
 }
 
-FriendList.propTypes = {
-  friends: PropTypes.array.isRequired,
-};
 
 export default FriendList;
